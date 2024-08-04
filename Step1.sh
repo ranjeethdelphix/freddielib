@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -xe
 #Script v1.0
 #############################################################
 #This script creates an inventory for Aurora Postgre Refresh
