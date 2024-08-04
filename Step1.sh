@@ -10,7 +10,7 @@ vars=$(getopt --long sourcedb:,targetdb:,refreshtype: -- "$@")
 eval set -- "$vars"
 
 # extract options and their arguments into variables.
-for opt; 
+for opt;
 do
     case "$opt" in
       --sourcedb)
