@@ -5,7 +5,8 @@
 #############################################################
 
 ##argument_script.sh
-vars=$(getopt -o i:o: --long input:,output: -- "$@")
+#vars=$(getopt -o i:o: --long input:,output: -- "$@")
+vars=$(getopt --long sourcedb:,targetdb:,refreshtype: -- "$@")
 eval set -- "$vars"
 
 # extract options and their arguments into variables.
