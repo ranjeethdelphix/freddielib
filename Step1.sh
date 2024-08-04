@@ -5,13 +5,11 @@
 #############################################################
 
 ##argument_script.sh
-#vars=$(getopt -o i:o: --long input:,output: -- "$@")
-vars=$(getopt --long sourcedb:,targetdb:,refreshtype: -- "$@")
+vars=$(getopt -o i:o: --long input:,output: -- "$@")
 eval set -- "$vars"
 
 # extract options and their arguments into variables.
-for opt;
-do
+for opt; do
     case "$opt" in
       --sourcedb)
         source_db = $2
