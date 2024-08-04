@@ -5,6 +5,11 @@
 #############################################################
 
 ##argument_script.sh
+
+refresh_type=0
+exec_type=0
+bkp_loc='N'
+
 vars=$(getopt -o s:t:r: --long sourcedb:,targetdb:,refreshtype: -- "$@")
 eval set -- "$vars"
 
@@ -23,10 +28,28 @@ for opt; do
         refresh_type=$2
         shift 2
         ;;
+      -x | --exectype)
+        exec_type=$2
+        shift 2
+        ;;
+      -b | --bkploc)
+        bkp_loc=$2
+        shift 2
+        ;;
+		
     esac
 done
 
-./pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type
+if [ $refresh_type -ne 0 && $bkp_loc -ne 'N']
+then 
+	./pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type -bkp $bkp_loc
 
+elif [ $refresh_type -ne 0 && $bkp_loc -eq 'N']
+then
+	./pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type
+
+else
+	./pg_refresh -et $exec_type
+fi
 
 ############## E O F ####################################
