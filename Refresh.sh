@@ -10,7 +10,7 @@ refresh_type=0
 exec_type=0
 bkp_loc='N'
 
-vars=$(getopt -o s:t:r: --long sourcedb:,targetdb:,refreshtype: -- "$@")
+vars=$(getopt -o s:t:r:x:b: --long sourcedb:,targetdb:,refreshtype:,exectype:,bkploc: -- "$@")
 eval set -- "$vars"
 
 # extract options and their arguments into variables.
