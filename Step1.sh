@@ -5,21 +5,21 @@
 #############################################################
 
 ##argument_script.sh
-vars=$(getopt -o i:o: --long input:,output: -- "$@")
+vars=$(getopt -o s:t:r: --long sourcedb:,targetdb:,refreshtype: -- "$@")
 eval set -- "$vars"
 
 # extract options and their arguments into variables.
 for opt; do
     case "$opt" in
-      --sourcedb)
+      -s | --sourcedb)
         source_db = $2
         shift 2
         ;;
-      --targetdb)
+      -t | --targetdb)
         target_db=$2
         shift 2
         ;;
-      --refreshtype)
+      -r | --refreshtype)
         refresh_type=$2
         shift 2
         ;;
