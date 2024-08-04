@@ -12,7 +12,7 @@ eval set -- "$vars"
 for opt; do
     case "$opt" in
       -s | --sourcedb)
-        source_db = $2
+        source_db=$2
         shift 2
         ;;
       -t | --targetdb)
