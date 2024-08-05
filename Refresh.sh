@@ -49,7 +49,7 @@ then
 	./pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type
 
 else
-	./pg_refresh -et $exec_type
+	./pg_refresh -et $exec_type -tdb $target_db
 fi
 
 ############## E O F ####################################
