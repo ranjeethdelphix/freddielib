@@ -40,11 +40,11 @@ for opt; do
     esac
 done
 
-if [ $refresh_type -ne '0' ] && [ $bkp_loc -ne 'N' ]
+if [ $refresh_type -ne 0 ] && [ $bkp_loc != 'N' ]
 then 
 	./pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type -bkp $bkp_loc
 
-elif [ $refresh_type -ne '0' ] && [ $bkp_loc -eq 'N' ]
+elif [ $refresh_type -ne 0 ] && [ $bkp_loc = 'N' ]
 then
 	./pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type
 
