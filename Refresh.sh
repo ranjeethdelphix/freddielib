@@ -11,7 +11,7 @@ exec_type=0
 bkp_loc='N'
 exec_path='/'
 
-vars=$(getopt -o s:t:r:x:b:p: --long sourcedb:,targetdb:,refreshtype:,exectype:,bkploc:,execpath: -- "$@")
+vars=$(getopt -o s:t:r:x:b: --long sourcedb:,targetdb:,refreshtype:,exectype:,bkploc: -- "$@")
 eval set -- "$vars"
 
 # extract options and their arguments into variables.
@@ -37,23 +37,21 @@ for opt; do
         bkp_loc=$2
         shift 2
         ;;
-      -p | --execpath)
-        exec_path=$2
-        shift 2
-        ;;
-		
+      	
     esac
 done
 
+cd ..
+
 if [ $refresh_type -ne 0 ] && [ $bkp_loc != 'N' ]
 then 
-	${exec_path}/pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type -bkp $bkp_loc
+	./pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type -bkp $bkp_loc
 
 elif [ $refresh_type -ne 0 ] && [ $bkp_loc = 'N' ]
 then
-	${exec_path}/pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type
+	./pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type
 
 else
-	${exec_path}pg_refresh -et $exec_type -tdb $target_db
+	./pg_refresh -et $exec_type -tdb $target_db
 fi
 ############## E O F ####################################
