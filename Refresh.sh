@@ -46,13 +46,13 @@ done
 
 if [ $refresh_type -ne 0 ] && [ $bkp_loc != 'N' ]
 then 
-	.${exec_path}pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type -bkp $bkp_loc
+	.${exec_path}/pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type -bkp $bkp_loc
 
 elif [ $refresh_type -ne 0 ] && [ $bkp_loc = 'N' ]
 then
-	.${exec_path}pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type
+	.${exec_path}/pg_refresh -sdb $source_db -tdb $target_db -rt $refresh_type
 
 else
-	.${exec_path}pg_refresh -et $exec_type -tdb $target_db
+	.${exec_path}/pg_refresh -et $exec_type -tdb $target_db
 fi
 ############## E O F ####################################
